@@ -231,16 +231,29 @@ export default function BookAppointmentPage() {
                         </div>
                      )}
                      <div className="slot-grid">
-                        {slots.map((slot, i) => (
+                        {slots.map((slot, i) => {
+                           const isToday = selectedDate.toDateString() === new Date().toDateString();
+                           let isPastInLocal = false;
+                           if (isToday) {
+                              const [h, m] = slot.startTime.split(':').map(Number);
+                              const slotTime = new Date();
+                              slotTime.setHours(h, m, 0, 0);
+                              if (new Date() >= slotTime) {
+                                 isPastInLocal = true;
+                              }
+                           }
+                           
+                           return (
                            <button
                               key={i}
-                              disabled={!slot.isAvailable}
+                              disabled={!slot.isAvailable || isPastInLocal}
                               className={`slot-btn ${selectedSlot?.startTime === slot.startTime ? 'selected' : ''}`}
                               onClick={() => setSelectedSlot(slot)}
                            >
                               {slot.startTime}
                            </button>
-                        ))}
+                           );
+                        })}
                      </div>
                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2rem' }}>
                         <button 
