@@ -70,7 +70,7 @@ export default function MyAppointmentsPage() {
           <Calendar size={48} style={{ margin: '0 auto 1rem', color: 'var(--color-neutral-300)' }} />
           <h3 style={{ marginBottom: '0.5rem' }}>No Appointments Found</h3>
           <p style={{ color: 'var(--color-neutral-500)', margin: '1.5rem' }}>
-            You haven't booked any appointments yet.
+            You haven&apos;t booked any appointments yet.
           </p>
           <Link href="/book" className="btn btn-primary">
             Book Your First Appointment
