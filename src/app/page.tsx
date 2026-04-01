@@ -101,7 +101,7 @@ export default async function HomePage() {
           <p className="scroll-animate stagger-1" style={{ color: 'var(--color-neutral-500)', maxWidth: '500px', margin: '1rem auto 0' }}>
             Book your appointment in three simple steps
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginTop: '3rem' }}>
+          <div className="grid-3" style={{ gap: '2rem', marginTop: '3rem' }}>
             <div className="glass-card scroll-animate stagger-1" style={{ padding: '2rem', textAlign: 'center' }}>
               <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem', fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.25rem' }}>1</div>
               <h3 style={{ fontSize: '1.125rem', marginBottom: '0.5rem' }}>Create Account</h3>
