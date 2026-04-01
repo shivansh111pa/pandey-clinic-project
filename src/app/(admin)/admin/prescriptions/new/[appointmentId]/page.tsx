@@ -124,7 +124,15 @@ export default function NewPrescriptionPage({ params }: { params: { appointmentI
                               </div>
                               <div className="form-group">
                                   <label style={{ fontSize: '0.75rem' }}>Instructions (Opt)</label>
-                                  <input type="text" className="form-input" value={med.instructions} onChange={e=>updateMed(i, 'instructions', e.target.value)} placeholder="After meals" />
+                                  <select className="form-input" value={med.instructions} onChange={e=>updateMed(i, 'instructions', e.target.value)}>
+                                      <option value="">Select...</option>
+                                      <option value="Before Meals (AC)">Before Meals (AC)</option>
+                                      <option value="After Meals (PC)">After Meals (PC)</option>
+                                      <option value="Empty Stomach">Empty Stomach</option>
+                                      <option value="With Milk">With Milk</option>
+                                      <option value="With Warm Water">With Warm Water</option>
+                                      <option value="Bedtime (HS)">Bedtime (HS)</option>
+                                  </select>
                               </div>
                               {medications.length > 1 && (
                                   <button onClick={() => removeMed(i)} className="btn btn-ghost btn-icon" style={{ color: 'var(--color-error)' }}><Trash2 size={20} /></button>
