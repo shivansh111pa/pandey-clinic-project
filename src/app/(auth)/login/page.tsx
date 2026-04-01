@@ -2,12 +2,16 @@
 
 import { useState } from 'react';
 import { signIn, getSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
-  const [error, setError] = useState<string>('');
+  const searchParams = useSearchParams();
+  const authError = searchParams?.get('error');
+  
+  const [error, setError] = useState<string>(authError ? 'Invalid email or password.' : '');
   const [loading, setLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
@@ -85,5 +89,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="auth-page"><div className="spinner spinner-lg"></div></div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
